@@ -9,11 +9,12 @@ def time():
     d = now.strftime('%Y年%m月%d日')
     return d
 
+search_youtuber = "かっつー"
 
 y_url="https://www.googleapis.com/youtube/v3/search?key=AIzaSyBiJc9NdQgNKGs7s-lB8xJ0YMdow9spGQk"
 y_param={
          "part":"snippet",
-         "q":"かっつー",
+         "q":"{}".format(search_youtuber),
          "maxResults":51,
          "order":"viewCount",
          "type":'video'}
@@ -25,5 +26,5 @@ for i in range(49):
     title = y_data["items"][i]["snippet"]["title"]
     data.append(title)
     df = pd.DataFrame(data)
-    df.to_csv("C:/Users/mknma/OneDrive/デスクトップ/仮想環境/env/youtube_scrape_{}.txt".format(time()))
+    df.to_csv("C:/Users/mknma/OneDrive/デスクトップ/仮想環境/env/youtube_scrape_{}{}.txt".format(time(),search_youtuber))
     
